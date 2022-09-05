@@ -47,13 +47,13 @@ public class MyLinkedList {
 	public String toString() {
 		if (this.first == null)
 			return null;
-		String a = "[" + first.ele;
+		StringBuilder a = new StringBuilder("[" + first.ele);
 		Node cur = first.next;
 		for (int i = 1; i < count; i++) {
-			a += ", " + cur.ele;
+			a.append(", " + cur.ele);
 			cur = cur.next;
 		}
-		return a + "]";
+		return a.toString() + "]";
 	}
 
 	// Class Node
