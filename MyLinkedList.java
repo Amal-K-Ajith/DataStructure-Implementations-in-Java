@@ -39,9 +39,9 @@ public class MyLinkedList <T> /*----Generic Type----*/{
 		count--;
 	}
 
-	public Object get(int index) {
+	public T get(int index) {
 		if(index<0 || index>=count)return null;
-		if(index==0)return first;
+		if(index==0)return first.ele;
 		Node cur=first;
 		for(int i=1;i<index;i++)
 			cur=cur.next;
