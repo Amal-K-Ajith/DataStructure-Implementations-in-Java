@@ -24,7 +24,7 @@ public class MyLinkedList {
 	}
 
 	public void remove(int index) {
-		if (index >= count)
+		if (index >= count || index < 0)
 			throw new IndexOutOfBoundsException();
 		if (index == 0) {
 			first = first.next;
