@@ -1,7 +1,7 @@
 /**
  * A basic implementation of LinkedList using Node which is a class
  */
-public class MyLinkedList {
+public class MyLinkedList <T> /*----Generic Type----*/{
 	private Node first;
 	private int count;
 
@@ -10,7 +10,7 @@ public class MyLinkedList {
 		this.count = 0;
 	}
 
-	public void add(Object e) {
+	public void add(T e) {
 		if (first == null) {
 			first = new Node(e, null);
 			count++;
@@ -39,6 +39,16 @@ public class MyLinkedList {
 		count--;
 	}
 
+	public Object get(int index) {
+		if(index<0 || index>=count)return null;
+		if(index==0)return first;
+		Node cur=first;
+		for(int i=1;i<index;i++)
+			cur=cur.next;
+		return cur.ele;
+		
+	}
+
 	public int size() {
 		return count;
 	}
@@ -58,10 +68,9 @@ public class MyLinkedList {
 
 	// Class Node
 	private class Node {
-		Object ele;
+		T ele;
 		Node next;
-
-		Node(Object e, Node n) {
+		Node(T e, Node n) {
 			ele = e;
 			next = n;
 		}
