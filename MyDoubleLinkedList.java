@@ -1,12 +1,12 @@
 /**
  * A basic implementation of Double Linked List using Node which is a class
  */
-public class MyDoubleLinkedList {
+public class MyDoubleLinkedList<T> {
 
 	Node head, tail;
 	private int count;
 
-	public void add(Object d) {
+	public void add(T d) {
 		if (head == null) {
 			head = new Node(null, d, null);
 			count++;
@@ -20,7 +20,15 @@ public class MyDoubleLinkedList {
 		count++;
 	}
 
-	public void addFirst(Object d) {
+	public T get(int index) {
+		if(index<0 || index>=count)return null;
+		if(index==0)return head.data;
+		Node cur=head;
+		for(int i=1;i<index;i++)cur=cur.next;
+		return cur.data;
+	}
+
+	public void addFirst(T d) {
 		if (head == null) {
 			head = new Node(null, d, null);
 			count++;
@@ -63,10 +71,10 @@ public class MyDoubleLinkedList {
 	}
 	// Class Node
 	class Node {
-		Object data;
+		T data;
 		Node prev, next;
 
-		Node(Node p, Object d, Node n) {
+		Node(Node p, T d, Node n) {
 			prev = p;
 			data = d;
 			next = n;
