@@ -42,11 +42,28 @@ public class MyLinkedList <T> /*----Generic Type----*/{
 	public T get(int index) {
 		if(index<0 || index>=count)return null;
 		if(index==0)return first.ele;
-		Node cur=first;
+		Node cur=first.next;
 		for(int i=1;i<index;i++)
 			cur=cur.next;
 		return cur.ele;
 		
+	}
+
+	public void insert(T data,int index) {
+		if(index<0 || index>=count)throw new IndexOutOfBoundsException();
+		Node cur;
+		if(index==0){
+			cur=first;
+			first=new Node(data, cur);
+			return;
+		}
+		cur=first;
+		for(int i=1;i<index;i++){
+			cur=cur.next;
+		}
+		Node n=new Node(data, cur.next);
+		cur.next=n;
+		this.count++;
 	}
 
 	public int size() {
