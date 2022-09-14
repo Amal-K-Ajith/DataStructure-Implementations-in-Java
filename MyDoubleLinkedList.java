@@ -20,6 +20,28 @@ public class MyDoubleLinkedList<T> {
 		count++;
 	}
 
+	public void remove(int index) {
+		if (index >= count || index < 0)
+			throw new IndexOutOfBoundsException();
+		if(index==count-1) {
+			tail=tail.prev;
+			count--;
+			return;
+		}
+		if (index == 0) {
+			head = head.next;
+			count--;
+			return;
+		}
+		Node cur = head;
+		for (int i = 1; i < index; i++) {
+			cur = cur.next;
+		}
+		cur.next = cur.next.next;
+		cur.next.prev=cur;
+		count--;
+	}
+
 	public T get(int index) {
 		if(index<0 || index>=count)return null;
 		if(index==0)return head.data;
